@@ -51,4 +51,57 @@ android 34-35 lesson:
         <string name="message">Message</string>
         <string name="send">Send</string>
     </resources>
-4. 
+4. 在启动android程序时如果希望调用自己写的myactivity_main.xml做为主activity，则需要在app->java->包名->MainActivity.java中:
+    package com.example.mackerlee.android_34;
+
+    import android.support.v7.app.AppCompatActivity;
+    import android.os.Bundle;
+    
+    public class MainActivity extends AppCompatActivity {
+    
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.myactivity_main);  //设置为我们自定义的activity
+        }
+    }
+
+android 36-38 lesson:
+1.RelativeLayout相对布局：相对其它组件的布局方式,有依赖关系的，官方推荐的布局方式，linnerlayout可以嵌套而Relativelayout不可以                           嵌套.
+2.创建一个相对布局res->layout->myactivity_main3.xml:
+    <?xml version="1.0" encoding="utf-8"?>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="16dp"          //paddingLeft:布局里的内容距离左边内边距，如下面的EditText文本框内容距离左边框16dp
+        android:paddingRight="16dp" >
+        <EditText
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/reminder" />
+        //--Spinner组件,相当于一个下拉列表
+        <Spinner
+            android:id="@+id/dates"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/name"         //layout_below:表示该控件位于给定ID的控件下面
+            android:layout_alignParentLeft="true"   //layout_alignParentLeft:该控件左边对齐父控件左边
+            android:layout_toLeftOf="@+id/times" /> //layout_toLeftOf:该控件位于指定ID控件的左边，即下面spinner的左边
+        <Spinner
+            android:id="@id/times"
+            android:layout_width="96dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/name"
+            android:layout_alignParentRight="true" />
+        <Button
+            android:layout_width="96dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/times"
+            android:layout_alignParentRight="true"
+            android:text="@string/done" />
+    </RelativeLayout>
+3.如果用linnerlayout实现上述布局必须使用布局嵌套，所以用相对布局性能和效果都更好.
+
+4.TableLayout:用表格的方式实现布局.
+5.FrameLayout:帧布局，每个组件都是是从屏幕的左上角坐标开始布局,后一个子控件会层叠前一个子控件，无法给子控件指定位置.
