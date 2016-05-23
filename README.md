@@ -105,3 +105,9 @@ android 36-38 lesson:
 
 4.TableLayout:用表格的方式实现布局.
 5.FrameLayout:帧布局，每个组件都是是从屏幕的左上角坐标开始布局,后一个子控件会层叠前一个子控件，无法给子控件指定位置.
+
+android 39 lesson:
+1.AbsoluteLayout绝对布局:根据绝对坐标来布局,指定了子元素准确的x/y值，该布局没有屏幕边框，允许元素之间相互重叠.
+2.布局工具：在C:\Users\mackerlee\AppData\Local\Android\sdk\tools文件夹中的hierarchyviewer分层视图查看工具,该工具必须与模拟器关             联使用，当启动模拟器运行app后，点击hierarchyviewer中的刷新Refresh，则会显示该模拟器信息，比如加载的工程等等，Load             View Hierarchy是加载视图分层按钮，inspect Screenshot是用精确位置去调整查看布局方式.
+            hierarchyviewer工具必须处于运行模式才能使用，调试模式是不能使用的
+            
